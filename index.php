@@ -1,62 +1,71 @@
 <?php
-    $canzone = "La mia vita è piena di problemi
 
-    E io mi ci butto a capofitto
+// Variabile di tipo stringa 
+$song= "Giro girotondo,
+casca il mondo,
+casca la terra,
+tutti giù per terra!
+Giro girotondo,
+il mare è fondo,
+tonda è la terra,
+tutti giù per terra!
+Giro girotondo,
+l’angelo è biondo,
+biondo è il grano,
+tutti ci sediamo!
+Giro girotondo,
+il pane è cotto in forno,
+buona è la ciambella,
+tutti giù per terra!";
 
-    Queste giornate piene di impegni
+// Variabile definita dall'input dell'utente 
+$badWord = $_GET["censored"];
 
-    Dovrei imparare a seguire il ritmo
+// Variabile definita da una funzione che sostituisce una parte di stringa con un nuovo valore 
+$censoredSong = str_replace($badWord, "***", $song);
 
-    Giro in auto, mi muovo da solo
-
-    Senza mezzi, è meglio, anzi peggio
-
-    Gli immigrati rubano il lavoro
-
-    Gli italiani rubano il parcheggio";
-
-    $parolaCensurata = $_GET["censura"];
 ?>
+
 <!DOCTYPE html>
 <html lang="it">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bad Words</title>
+        <title>PHP Badwords</title>
     </head>
     <body>
-        <h1>Propaganda</h1>
-        <h3>(Fabri Fibra)</h3>
+        <main>
 
-        <!-- Stampa variabile song e relativa lunghezza -->
-        <p> 
-            <?php echo $canzone;?>
-        </p>
-        <h6> 
-            Questa canzone è lunga
-            <?php echo strlen($canzone);?> 
-            caratteri.
-        </h6>
+            <h1>PHP Badwords Private</h1>
+            <p>
+                <!-- Stampa della variabile -->
+                <?php echo $song; ?>
+            </p>
+            <p>Questa canzone è lunga 
+                <!-- Stampa della funzione che calcola il numero dei caratteri di una stringa -->
+                <?php echo strlen($song); ?> 
+                caratteri.
+            </p>
 
-        <!-- Input utente -->
-        <form action="" method="GET">
-            <input type="text" name="censura" placeholder="Inserisci la parola della canzone che vorresti censurare..." size="50">
-            <button>
-                Invia
-            </button>
-        </form>
+            <!-- Form attraverso il quale si può recuperare informazioni dall'utente -->
+            <form method="GET">
+                <input type="text" name="censored" placeholder="Inserisci la parola che vorresti censurare" size="50">
+                <button>Invia</button>
+            </form>
 
-        <!-- Canzone censurata -->
-        <h4>Canzone censurata:</h4>
-        <p>
-            <?php echo $canzoneCensurata= str_replace("$parolaCensurata", "***", $canzone) ?>
-        </p>
-        <h6>
-            La canzone censurata è lunga 
-            <?php echo strlen($canzoneCensurata);?>
-            caratteri.
-        </h6>
+            <!-- !!!CANZONE CENSURATA!!! -->
+            <h3>La canzone censurata:</h3>
+            <p>
+                <!-- Stampa della canzone censurata -->
+                <?php echo $censoredSong; ?>
+            </p>
+            <p>La canzone censurata è lunga 
+                <!-- Stampa della funzione che calcola il numero dei caratteri di una stringa -->
+                <?php echo strlen($censoredSong); ?> 
+                caratteri.
+            </p>
 
+        </main>
     </body>
 </html>
